@@ -339,9 +339,9 @@ const GymProSeed = (() => {
     }));
   }
 
-  function generateMeasurements(members) {
+function generateMeasurements(members) {
     const measurements = [];
-    for (let i = 0; i < 300; i++) {
+    for (let i = 0; i < 100; i++) {
       const member = members[rand(0, members.length - 1)];
       measurements.push({
         id: i + 1,
@@ -381,15 +381,15 @@ const GymProSeed = (() => {
     const seeded = GymProDB.read('seeded');
     if (seeded) return;
 
-    const members = generateMembers(500);
-    const trainers = generateTrainers(40);
+const members = generateMembers(120);
+    const trainers = generateTrainers(30);
     const plans = generatePlans();
     const branches = generateBranches();
-    const attendance = generateAttendance(1000, members);
-    const payments = generatePayments(500, members);
-    const classes = generateClasses(50);
-    const inventory = generateInventory(200);
-    const equipment = generateEquipment(150);
+    const attendance = generateAttendance(250, members);
+    const payments = generatePayments(200, members);
+    const classes = generateClasses(40);
+    const inventory = generateInventory(60);
+    const equipment = generateEquipment(50);
 
     GymProDB.write('members', members);
     GymProDB.write('trainers', trainers);

@@ -179,9 +179,13 @@ const user = GymProAuth.currentUser();
     navigate();
   }
 
-  // ---- Init ----
+// ---- Init ----
   function init() {
-    GymProSeed.seed();
+    try {
+      GymProSeed.seed();
+    } catch (e) {
+      console.error('Seed failed (likely storage quota). Continuing with empty data.', e);
+    }
     // Sidebar open/close
     document.getElementById('sidebar-open').addEventListener('click', () => {
       document.getElementById('sidebar').style.transform = 'translateX(0)';
