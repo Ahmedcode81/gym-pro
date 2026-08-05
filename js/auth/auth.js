@@ -88,9 +88,129 @@ const GymProAuth = (() => {
     return Object.entries(ROLE_LABELS).map(([value, label]) => ({ value, label, color: ROLE_COLORS[value] }));
   }
 
+// ---- Login view rendering ----
+  function demoAccounts() {
+    return [
+      { role: 'super_admin', email: 'admin@gympro.com', password: 'admin123', label: 'Super Admin', color: '#EF4444' },
+      { role: 'owner', email: 'owner@gympro.com', password: 'owner123', label: 'Owner', color: '#8B5CF6' },
+      { role: 'branch_manager', email: 'manager@gympro.com', password: 'manager123', label: 'Manager', color: '#2563EB' },
+      { role: 'receptionist', email: 'receptionist@gympro.com', password: 'reception123', label: 'Receptionist', color: '#06B6D4' },
+      { role: 'trainer', email: 'trainer@gympro.com', password: 'trainer123', label: 'Trainer', color: '#22C55E' },
+      { role: 'accountant', email: 'accountant@gympro.com', password: 'account123', label: 'Accountant', color: '#F59E0B' },
+    ];
+  }
+
+  function renderLogin() {
+    const { icon } = window.GymProUtils;
+    return `
+      <div class="login-wrap">
+        <div class="login-box">
+          <div class="login-brand">
+            <div class="brand-logo">${icon('dumbbell')}</div>
+            <h1>GymPro</h1>
+          </div>
+          <div class="login-card">
+            <h2>Welcome back</h2>
+            <p class="login-sub">Sign in to the gym management system</p>
+            <div id="login-error" class="login-error hidden"></div>
+            <form id="login-form">
+              <div class="form-group">
+                <label class="form-label">Email</label>
+                <div class="input-with-icon">
+                  ${icon('mail')}
+                  <input type="email" id="login-email" class="form-control" placeholder="you@example.com" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Password</label>
+                <div class="input-with-icon">
+                  ${icon('lock')}
+                  <input type="password" id="login-password" class="form-control" placeholder="••••••••" required />
+                  <button type="button" class="password-toggle" id="password-toggle">${icon('eye')}</button>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%;height:48px;margin-top:8px" id="login-submit">
+                ${icon('logIn')} Sign In
+              </button>
+            </form>
+            <div class="demo-accounts">
+              <p class="demo-accounts-title">Quick demo login</p>
+              <div class="demo-account-grid">
+                ${demoAccounts().map((a) => `
+                  <button class="demo-account" data-email="${a.email}" data-password="${a.password}">
+                    <span class="role-dot" style="background:${a.color}"></span>
+                    ${a.label}
+                  </button>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+          <p class="login-footer">GymPro Demo &copy; 2025</p>
+        </div>
+      </div>
+    `;
+  }
+
+  function initLogin() {
+    const form = document.getElementById('login-form');
+    const errorEl = document.getElementById('login-error');
+    const submitBtn = document.getElementById('login-submit');
+    const toggle = document.getElementById('password-toggle');
+    const passInput = document.getElementById('login-password');
+
+    // Password toggle
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        const type = passInput.type === 'password' ? 'text' : 'password';
+        passInput.type = type;
+        toggle.innerHTML = window.GymProUtils.icon(type === 'password' ? 'eye' : 'eyeOff');
+      });
+    }
+
+    // Demo quick login buttons
+    document.querySelectorAll('.demo-account').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const email = btn.dataset.email;
+        const password = btn.dataset.password;
+        // Prefill
+        document.getElementById('login-email').value = email;
+        document.getElementById('login-password').value = password;
+        await doLogin(email, password, errorEl, submitBtn);
+      });
+    });
+
+    // Form submit
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
+        await doLogin(email, password, errorEl, submitBtn);
+      });
+    }
+  }
+
+  async function doLogin(email, password, errorEl, submitBtn) {
+    if (errorEl) errorEl.classList.add('hidden');
+    if (submitBtn) submitBtn.disabled = true;
+    try {
+      await login(email, password);
+      window.GymProUtils.toast({ title: 'Welcome back!', description: 'Signed in successfully' });
+      location.hash = '#/dashboard';
+      if (window.GymProApp && GymProApp.navigate) GymProApp.navigate();
+    } catch (err) {
+      if (errorEl) {
+        errorEl.textContent = err.message || 'Invalid credentials';
+        errorEl.classList.remove('hidden');
+      }
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+    }
+  }
+
   return {
     currentUser, isAuthenticated, login, logout, hasPermission,
-    roleLabel, roleColor, allRoles, ROLE_LABELS,
+    roleLabel, roleColor, allRoles, ROLE_LABELS, renderLogin, initLogin, demoAccounts,
   };
 })();
 
