@@ -127,9 +127,10 @@ const GymProApp = (() => {
 
   // ---- Router ----
   async function navigate() {
-    const user = GymProAuth.currentUser();
+const user = GymProAuth.currentUser();
     if (!user) {
       showLogin();
+      loadLogin(document.getElementById('login-view'));
       return;
     }
 
