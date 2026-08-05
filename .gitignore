@@ -51,3 +51,40 @@ out/
 
 # Docker
 docker-compose.override.yml
+
+# =============================================================
+# GymPro GitHub Pages Demo
+# These exclude the original React app and FastAPI backend.
+# The code is kept locally but NOT published to GitHub Pages.
+# =============================================================
+
+# Backend (FastAPI) - keep local only
+backend/
+*.py
+*.pyc
+setup_postgres.ps1
+*.db
+*.sqlite
+*.sqlite3
+
+# Original React frontend build - keep local only
+frontend/
+node_modules/
+dist/
+build/
+
+# Virtual environments
+venv/
+.venv/
+env/
+__pycache__/
+
+# Secrets / env
+.env
+.env.local
+.env.production
+*.secret
+
+# Local temp files
+repo.json
+*.tmp
