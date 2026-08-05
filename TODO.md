@@ -117,8 +117,8 @@ Verify:
 - [ ] Works directly on GitHub Pages
 
 ## Phase 12 - Release
-- [ ] Commit demo branch
-- [ ] Push github-pages-demo branch
+- [x] Commit demo branch
+- [x] Push github-pages-demo branch
 - [x] Enable GitHub Pages
 - [x] Verify deployment
 
