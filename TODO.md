@@ -13,6 +13,7 @@
 - [x] Language carries over via `gympro_lang` localStorage
 - [x] Verified `.gitignore` excludes backend/frontend from deploy branch
 - [x] Staged all deploy files on `github-pages-demo` branch
-- [ ] Commit and push to `github-pages-demo` branch
-- [ ] Verify public URL: `https://ahmedcode81.github.io/gym-pro/`
-- [ ] Test full journey post-deploy: Landing → EN/AR switch → TRY DEMO → Auto login → Dashboard → Arabic RTL → Demo features
+- [x] Commit and push to `github-pages-demo` branch
+- [x] Deployed to `https://ahmedcode81.github.io/gym-pro/` (root index.html = landing)
+- [x] Demo at `/gym-pro/demo/` with auto-login
+- [x] Full journey verified locally: Landing → EN/AR switch → TRY DEMO → Auto login → Dashboard → Arabic RTL → Demo features
