@@ -84,10 +84,10 @@ const GymProSeed = (() => {
       const membershipStatus = joinDaysAgo > 700 ? 'expired' : (status < 0.7 ? 'active' : (status < 0.9 ? 'active' : 'pending'));
       const branchId = rand(1, 3);
       const planId = rand(1, 10);
-      members.push({
+members.push({
         id: i + 1,
         full_name: p.full_name,
-        email: randomEmail(p.full, i),
+        email: randomEmail(p.full_name, i),
         phone: randomPhone(),
         gender: p.gender,
         birth_date: randomDate(7300, 12000),
@@ -122,9 +122,9 @@ const GymProSeed = (() => {
       }
       const status = Math.random() < 0.9 ? 'active' : 'inactive';
       trainers.push({
-        id: i + 1,
+id: i + 1,
         full_name: p.full_name,
-        email: randomEmail(p.full, i),
+        email: randomEmail(p.full_name, i),
         phone: randomPhone(),
         gender: p.gender,
         specialty: spec.join(', '),
@@ -298,10 +298,10 @@ const GymProSeed = (() => {
     for (let i = 6; i < 20; i++) {
       const p = makePerson(i);
       const role = pick(['receptionist','trainer','accountant','branch_manager']);
-      users.push({
+users.push({
         id: i + 1,
         full_name: p.full_name,
-        email: randomEmail(p.full, i),
+        email: randomEmail(p.full_name, i),
         password: 'pass123',
         role,
         branch_id: rand(1, 3),
