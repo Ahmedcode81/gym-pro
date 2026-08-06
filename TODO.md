@@ -1,47 +1,34 @@
-# GymPro - Static Frontend Demo Build - Task List
+# GymPro - Landing Page + Demo Deployment
 
-## Goal
-Build a fully static, frontend-only GymPro demo (localStorage mock API, fake auth, seeded data, full CRUD) deployable to GitHub Pages. Keep React/backend locally, exclude from GitHub.
+## Landing Page Implementation (Stage 1 & 2)
+- [x] Explored existing project structure, design system, and demo environment
+- [x] Created `css/landing.css` with landing styles using GymPro design system
+- [x] Created `landing.html` with full bilingual (EN/AR) landing page
+- [x] Created `landing.js` with EN⇄AR switching + TRY DEMO demo redirect
+- [x] Added auto-demo-login logic to `js/app.js`
+- [x] Added `js/i18n.js` bilingual i18n module with RTL support
+- [x] Translated demo login page (`js/auth/auth.js`)
+- [x] Added RTL layout support + lang-switch styling to `css/styles.css`
+- [x] Wired the "TRY DEMO" button to `demo/index.html#/dashboard`
+- [x] Localized demo dashboard (`pages/dashboard.js`)
 
-## Setup
-- [x] 1. Create backup branch `backup-original-project`
-- [ ] 2. Update .gitignore to exclude backend/, venv/, __pycache__/, *.py, DB, secrets
+## GitHub Pages Deployment (Stage 3)
+- [x] Placed landing page as root `index.html` (main entry point)
+- [x] Created self-contained `demo/` subfolder app with auto-login
+- [x] Landing → demo language carryover via `gympro_lang` localStorage
+- [x] Pushed deployment to `github-pages-demo` branch (006b4fc, 87db3e5)
+- [x] Synced deployment to `main` branch (943c589) since live site serves from main
+- [x] Verified all key files present on deployed branches
+- [x] Verified raw deployed content is correct (landing + demo + i18n + auto-login)
 
-## Core Infrastructure
-- [ ] 3. index.html (SPA shell: login + app layout)
-- [ ] 4. css/styles.css (replicate Tailwind design system)
-- [ ] 5. js/utils.js (delay, toast, formatters, helpers)
-- [ ] 6. js/storage/database.js (localStorage CRUD engine)
-- [ ] 7. js/storage/seed.js (seed realistic gym data)
-- [ ] 8. js/api/mockApi.js (simulated fetch 300-800ms)
-- [ ] 9. js/auth/auth.js (fake login, 6 roles)
-- [ ] 10. js/app.js (router, sidebar, page loader, auth guard)
+## Live Verification
+- [ ] Live landing: https://ahmedcode81.github.io/gym-pro/ (pending GitHub Pages cache refresh)
+- [ ] Live demo: https://ahmedcode81.github.io/gym-pro/demo/ (pending GitHub Pages cache refresh)
 
-## Services
-- [ ] 11. js/services/*.js (members, trainers, plans, attendance, payments, classes, inventory, equipment, branches, users, dashboard)
-
-## Pages
-- [ ] 12. Login
-- [ ] 13. Dashboard
-- [ ] 14. Members
-- [ ] 15. Membership Plans
-- [ ] 16. Check In
-- [ ] 17. Trainers
-- [ ] 18. Workout Programs
-- [ ] 19. Nutrition Plans
-- [ ] 20. Body Measurements
-- [ ] 21. Group Classes
-- [ ] 22. Payments
-- [ ] 23. POS
-- [ ] 24. Inventory
-- [ ] 25. Reports
-- [ ] 26. Settings
-- [ ] 27. Users
-- [ ] 28. Branches
-- [ ] 29. Equipment
-
-## Finalization
-- [ ] 30. README.md (GitHub Pages deploy instructions)
-- [ ] 31. Remove React/backend from git, commit static demo
-- [ ] 32. Test, verify no broken links/empty pages/JS errors
-- [ ] 33. Force-push to GitHub Pages
+## Demo Accounts (fake data)
+- Super Admin: admin@gympro.com / admin123
+- Owner: owner@gympro.com / owner123
+- Manager: manager@gympro.com / manager123
+- Receptionist: receptionist@gympro.com / reception123
+- Trainer: trainer@gympro.com / trainer123
+- Accountant: accountant@gympro.com / account123
