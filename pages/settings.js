@@ -104,4 +104,3 @@ const SettingsPage = (() => {
 })();
 
 window.loadSettings = (container) => SettingsPage.render(container);
-</content>

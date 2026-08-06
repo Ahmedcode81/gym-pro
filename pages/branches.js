@@ -160,4 +160,3 @@ const BranchesPage = (() => {
 })();
 
 window.loadBranches = (container) => BranchesPage.render(container);
-</content>
