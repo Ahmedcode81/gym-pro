@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#172B4D" />
+  <title>GymPro - Gym Management System</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Toast container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Login view -->
+  <div id="login-view" class="hidden">
+    <!-- Rendered by auth.js -->
+  </div>
+
+  <!-- App layout -->
+  <div id="app-shell" class="hidden">
+    <div class="app">
+      <!-- Mobile sidebar backdrop -->
+      <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
+
+      <!-- Sidebar -->
+      <aside id="sidebar" class="sidebar">
+        <div class="sidebar-inner">
+          <div class="sidebar-header">
+            <div class="brand">
+              <div class="brand-logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 6.5L17.5 17.5M6.5 17.5L17.5 6.5"/><path d="M4 4l0 0M20 20l0 0"/></svg>
+              </div>
+              <h1 class="brand-name">GymPro</h1>
+            </div>
+            <button id="sidebar-close" class="icon-btn lg-hidden" aria-label="Close menu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+          </div>
+          <nav id="sidebar-nav" class="sidebar-nav"></nav>
+          <div class="sidebar-footer">
+            <div class="user-chip">
+              <div class="avatar avatar-blue" id="sidebar-avatar">U</div>
+              <div class="user-chip-info">
+                <p id="sidebar-user-name">User</p>
+                <p id="sidebar-user-role">Role</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main -->
+      <div id="main-wrap" class="main-wrap">
+        <header class="topbar">
+          <div class="topbar-inner">
+            <div class="topbar-left">
+              <button id="sidebar-open" class="icon-btn lg-hidden" aria-label="Open menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+              </button>
+              <div class="page-title">
+                <h2 id="page-title">Dashboard</h2>
+                <p id="page-section">Main</p>
+              </div>
+              <div class="topbar-search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                <input type="text" placeholder="Search anything..." />
+              </div>
+            </div>
+            <div class="topbar-right">
+              <button class="icon-btn md-hidden" aria-label="Search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+              </button>
+              <button class="icon-btn sm-hidden" aria-label="Notifications">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>
+                <span class="dot dot-red"></span>
+              </button>
+              <button class="icon-btn sm-hidden" aria-label="Messages">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                <span class="dot dot-blue"></span>
+              </button>
+              <button class="icon-btn sm-hidden" aria-label="Theme">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+              </button>
+              <button class="avatar-btn" id="header-avatar" aria-label="Account">U</button>
+            </div>
+          </div>
+        </header>
+        <main id="page-content" class="page-content"></main>
+      </div>
+
+      <!-- Mobile bottom nav -->
+      <nav id="bottom-nav" class="bottom-nav"></nav>
+    </div>
+
+    <!-- Global modal container -->
+    <div id="modal-root"></div>
+  </div>
+
+<!-- Scripts -->
+<script src="js/utils.js?v=5"></script>
+  <script src="js/i18n.js?v=1"></script>
+  <script src="js/storage/database.js?v=5"></script>
+  <script src="js/storage/seed.js?v=5"></script>
+  <script src="js/api/mockApi.js?v=5"></script>
+  <script src="js/auth/auth.js?v=5"></script>
+  <script src="js/services/members.js?v=5"></script>
+  <script src="js/services/trainers.js?v=5"></script>
+  <script src="js/services/plans.js?v=5"></script>
+  <script src="js/services/attendance.js?v=5"></script>
+  <script src="js/services/payments.js?v=5"></script>
+  <script src="js/services/classes.js?v=5"></script>
+  <script src="js/services/inventory.js?v=5"></script>
+  <script src="js/services/equipment.js?v=5"></script>
+  <script src="js/services/branches.js?v=5"></script>
+  <script src="js/services/users.js?v=5"></script>
+  <script src="js/services/workout.js?v=5"></script>
+  <script src="js/services/nutrition.js?v=5"></script>
+  <script src="js/services/measurements.js?v=5"></script>
+  <script src="js/services/dashboard.js?v=5"></script>
+  <script src="js/services/pos.js?v=5"></script>
+  <script src="js/services/reports.js?v=5"></script>
+  <script src="js/services/settings.js?v=5"></script>
+  <script src="pages/login.js?v=5"></script>
+  <script src="pages/dashboard.js?v=7"></script>
+  <script src="pages/members.js?v=5"></script>
+  <script src="pages/membership-plans.js?v=5"></script>
+  <script src="pages/check-in.js?v=5"></script>
+  <script src="pages/trainers.js?v=5"></script>
+  <script src="pages/workout-programs.js?v=5"></script>
+  <script src="pages/nutrition-plans.js?v=5"></script>
+  <script src="pages/body-measurements.js?v=5"></script>
+  <script src="pages/group-classes.js?v=5"></script>
+  <script src="pages/payments.js?v=5"></script>
+  <script src="pages/pos.js?v=5"></script>
+  <script src="pages/inventory.js?v=5"></script>
+  <script src="pages/equipment.js?v=5"></script>
+  <script src="pages/branches.js?v=5"></script>
+  <script src="pages/users.js?v=5"></script>
+  <script src="pages/reports.js?v=5"></script>
+  <script src="pages/settings.js?v=5"></script>
+  <script src="js/app.js?v=5"></script>
+</body>
+</html>
