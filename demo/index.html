@@ -1,148 +1,279 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#172B4D" />
-  <title>GymPro - Gym Management System</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
+  <title>GymPro - Professional Gym Management System</title>
+  <meta name="description" content="GymPro is a professional, all-in-one gym management system with member management, subscriptions, trainers, attendance, payments, reports, roles & permissions, and a modern dashboard." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css?v=6" />
+  <link rel="stylesheet" href="css/landing.css" />
 </head>
-<body>
-  <!-- Toast container -->
-  <div id="toast-container" class="toast-container"></div>
+<body class="landing">
+  <!-- ================= NAVBAR ================= -->
+  <nav class="lp-nav">
+    <div class="lp-nav-inner">
+      <div class="lp-brand">
+        <div class="lp-brand-logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 6.5L17.5 17.5M6.5 17.5L17.5 6.5"/><path d="M4 4l0 0M20 20l0 0"/></svg>
+        </div>
+        <h1 class="lp-brand-name">GymPro</h1>
+      </div>
+      <div class="lp-nav-links">
+        <a href="#features" data-i18n="navFeatures">Features</a>
+        <a href="#demo" data-i18n="navDemo">Live Demo</a>
+        <a href="#developer" data-i18n="navDeveloper">Developer</a>
+      </div>
+      <div class="lp-nav-actions">
+        <button class="lang-switch" id="lang-toggle" onclick="toggleLang()" aria-label="Switch language">
+          <span id="lang-label">العربية</span>
+        </button>
+        <button class="btn-try" onclick="startDemo()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><path d="M10 17l5-5-5-5M15 12H3"/></svg>
+          <span data-i18n="tryDemo">TRY DEMO</span>
+        </button>
+      </div>
+    </div>
+  </nav>
 
-  <!-- Login view -->
-  <div id="login-view" class="hidden">
-    <!-- Rendered by auth.js -->
-  </div>
-
-  <!-- App layout -->
-  <div id="app-shell" class="hidden">
-    <div class="app">
-      <!-- Mobile sidebar backdrop -->
-      <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
-
-      <!-- Sidebar -->
-      <aside id="sidebar" class="sidebar">
-        <div class="sidebar-inner">
-          <div class="sidebar-header">
-            <div class="brand">
-              <div class="brand-logo">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 6.5L17.5 17.5M6.5 17.5L17.5 6.5"/><path d="M4 4l0 0M20 20l0 0"/></svg>
-              </div>
-              <h1 class="brand-name">GymPro</h1>
-            </div>
-            <button id="sidebar-close" class="icon-btn lg-hidden" aria-label="Close menu">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-            </button>
+  <!-- ================= HERO ================= -->
+  <header class="lp-hero">
+    <div class="lp-animate">
+      <span class="lp-hero-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+        <span data-i18n="heroBadge">All-in-one Gym Management Platform</span>
+      </span>
+      <h1><span data-i18n="heroTitle1">Run your gym like a</span> <span class="accent" data-i18n="heroTitle2">pro</span> <span data-i18n="heroTitle3">with GymPro</span></h1>
+      <p data-i18n="heroDesc">GymPro is a professional SaaS platform that helps gym owners and managers handle members, subscriptions, trainers, check-ins, payments, and analytics — all in one modern dashboard.</p>
+      <div class="lp-hero-actions">
+        <button class="btn-try btn-try-lg" onclick="startDemo()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><path d="M10 17l5-5-5-5M15 12H3"/></svg>
+          <span data-i18n="tryDemo">TRY DEMO</span>
+        </button>
+        <a class="btn-plain" href="#features">
+          <span data-i18n="exploreFeatures">Explore Features</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </a>
+      </div>
+      <div class="lp-hero-stats">
+        <div class="lp-hero-stat"><div class="v">500+</div><div class="l" data-i18n="statMembers">Members</div></div>
+        <div class="lp-hero-stat"><div class="v">20+</div><div class="l" data-i18n="statFeatures">Features</div></div>
+        <div class="lp-hero-stat"><div class="v">6</div><div class="l" data-i18n="statRoles">User Roles</div></div>
+        <div class="lp-hero-stat"><div class="v">100%</div><div class="l" data-i18n="statData">Fake Data</div></div>
+      </div>
+    </div>
+    <div class="lp-hero-visual lp-animate">
+      <div class="lp-mockup">
+        <div class="lp-mockup-bar">
+          <span style="background:#F87171"></span>
+          <span style="background:#FBBF24"></span>
+          <span style="background:#34D399"></span>
+        </div>
+        <div class="lp-mockup-body">
+          <div class="lp-mockup-grid">
+            <div class="lp-mockup-stat"><div class="v">$48,250</div><div class="l" data-i18n="mockRevenue">Monthly Revenue</div></div>
+            <div class="lp-mockup-stat"><div class="v">342</div><div class="l" data-i18n="mockMembers">Active Members</div></div>
+            <div class="lp-mockup-stat"><div class="v">18</div><div class="l" data-i18n="mockTrainers">Trainers</div></div>
+            <div class="lp-mockup-stat"><div class="v">97%</div><div class="l" data-i18n="mockRenewal">Renewal Rate</div></div>
           </div>
-          <nav id="sidebar-nav" class="sidebar-nav"></nav>
-          <div class="sidebar-footer">
-            <div class="user-chip">
-              <div class="avatar avatar-blue" id="sidebar-avatar">U</div>
-              <div class="user-chip-info">
-                <p id="sidebar-user-name">User</p>
-                <p id="sidebar-user-role">Role</p>
-              </div>
-            </div>
+          <div class="lp-mockup-chart">
+            <div style="height:30%"></div>
+            <div style="height:45%"></div>
+            <div style="height:38%"></div>
+            <div style="height:60%"></div>
+            <div style="height:52%"></div>
+            <div style="height:75%"></div>
+            <div style="height:68%"></div>
+            <div style="height:90%"></div>
           </div>
         </div>
-      </aside>
-
-      <!-- Main -->
-      <div id="main-wrap" class="main-wrap">
-        <header class="topbar">
-          <div class="topbar-inner">
-            <div class="topbar-left">
-              <button id="sidebar-open" class="icon-btn lg-hidden" aria-label="Open menu">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-              </button>
-              <div class="page-title">
-                <h2 id="page-title">Dashboard</h2>
-                <p id="page-section">Main</p>
-              </div>
-              <div class="topbar-search">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-                <input type="text" placeholder="Search anything..." />
-              </div>
-            </div>
-            <div class="topbar-right">
-              <button class="icon-btn md-hidden" aria-label="Search">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-              </button>
-              <button class="icon-btn sm-hidden" aria-label="Notifications">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>
-                <span class="dot dot-red"></span>
-              </button>
-              <button class="icon-btn sm-hidden" aria-label="Messages">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-                <span class="dot dot-blue"></span>
-              </button>
-              <button class="icon-btn sm-hidden" aria-label="Theme">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-              </button>
-              <button class="avatar-btn" id="header-avatar" aria-label="Account">U</button>
-            </div>
-          </div>
-        </header>
-        <main id="page-content" class="page-content"></main>
       </div>
-
-      <!-- Mobile bottom nav -->
-      <nav id="bottom-nav" class="bottom-nav"></nav>
     </div>
+  </header>
 
-    <!-- Global modal container -->
-    <div id="modal-root"></div>
-  </div>
+  <!-- ================= FEATURES ================= -->
+  <section class="lp-section" id="features">
+    <div class="lp-section-head">
+      <h2 data-i18n="featuresTitle">Everything your gym needs</h2>
+      <p data-i18n="featuresSub">A complete suite of tools to manage every aspect of your fitness business.</p>
+    </div>
+    <div class="lp-features">
+      <div class="lp-feature">
+        <div class="lp-feature-icon lp-gradient-blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3 data-i18n="featOverviewTitle">Gym Management Overview</h3>
+        <p data-i18n="featOverviewDesc">Get a real-time overview of your entire facility with key metrics, occupancy, and operational health at a glance.</p>
+      </div>
+      <div class="lp-feature">
+        <div class="lp-feature-icon lp-gradient-cyan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M17 11l2 2 4-4"/></svg>
+        </div>
+        <h3 data-i18n="featMembersTitle">Member Management</h3>
+        <p data-i18n="featMembersDesc">Complete CRM for members with profiles, status tracking, search, filters, and import/export capabilities.</p>
+      </div>
+      <div class="lp-feature">
+        <div class="lp-feature-icon lp-gradient-purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+        </div>
+        <h3 data-i18n="featSubsTitle">Subscription Management</h3>
+        <p data-i18n="featSubsDesc">Unlimited membership plans with flexible pricing, durations, freeze days, and visit limits.</p>
+      </div>
+      <div class="lp-feature">
+        <div class="lp-feature-icon lp-gradient-green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 6.5L17.5 17.5M6.5 17.5L17.5 6.5"/><path d="M4 4l0 0M20 20l0 0"/></svg>
+        </div>
+        <h3 data-i18n="featTrainersTitle">Trainers Management</h3>
+        <p data-i18n="featTrainersDesc">Manage trainer profiles, schedules, specializations, certifications, and member assignments.</p>
+      </div>
+      <div class="lp-feature">
+        <div class="lp-feature-icon lp-gradient-amber">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3 data-i18n="featAttendanceTitle">Attendance Tracking</h3>
+        <p data-i18n="featAttendanceDesc">QR, barcode, RFID, and manual check-in with visit history and real-time tracking.</p>
+      </div>
+      <div class="lp-feature">
+        <div class="lp-feature-icon lp-gradient-rose">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <h3 data-i18n="featPaymentsTitle">Payments & Billing</h3>
+        <p data-i18n="featPaymentsDesc">Multiple payment methods, invoices, partial payments, refunds, discounts, and taxes.</p>
+      </div>
+      <div class="lp-feature">
+        <div class="lp-feature-icon lp-gradient-indigo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+        </div>
+        <h3 data-i18n="featReportsTitle">Reports & Analytics</h3>
+        <p data-i18n="featReportsDesc">Revenue, membership, attendance, sales, inventory, and trainer reports with PDF/Excel export.</p>
+      </div>
+      <div class="lp-feature">
+        <div class="lp-feature-icon lp-gradient-slate">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 data-i18n="featRolesTitle">User Roles & Permissions</h3>
+        <p data-i18n="featRolesDesc">Role-based access control with Super Admin, Owner, Manager, Receptionist, Trainer, and Accountant roles.</p>
+      </div>
+      <div class="lp-feature">
+        <div class="lp-feature-icon lp-gradient-blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        </div>
+        <h3 data-i18n="featDashboardTitle">Modern Dashboard</h3>
+        <p data-i18n="featDashboardDesc">A beautiful, responsive dashboard with charts, KPIs, quick actions, and live activity feeds.</p>
+      </div>
+    </div>
+  </section>
 
-<!-- Scripts -->
-<script src="js/utils.js?v=5"></script>
-  <script src="js/i18n.js?v=2"></script>
-  <script src="js/storage/database.js?v=5"></script>
-  <script src="js/storage/seed.js?v=5"></script>
-  <script src="js/api/mockApi.js?v=5"></script>
-  <script src="js/auth/auth.js?v=6"></script>
-  <script src="js/services/members.js?v=5"></script>
-  <script src="js/services/trainers.js?v=5"></script>
-  <script src="js/services/plans.js?v=5"></script>
-  <script src="js/services/attendance.js?v=5"></script>
-  <script src="js/services/payments.js?v=5"></script>
-  <script src="js/services/classes.js?v=5"></script>
-  <script src="js/services/inventory.js?v=5"></script>
-  <script src="js/services/equipment.js?v=5"></script>
-  <script src="js/services/branches.js?v=5"></script>
-  <script src="js/services/users.js?v=5"></script>
-  <script src="js/services/workout.js?v=5"></script>
-  <script src="js/services/nutrition.js?v=5"></script>
-  <script src="js/services/measurements.js?v=5"></script>
-  <script src="js/services/dashboard.js?v=5"></script>
-  <script src="js/services/pos.js?v=5"></script>
-  <script src="js/services/reports.js?v=5"></script>
-  <script src="js/services/settings.js?v=5"></script>
-  <script src="pages/login.js?v=5"></script>
-  <script src="pages/dashboard.js?v=8"></script>
-  <script src="pages/members.js?v=5"></script>
-  <script src="pages/membership-plans.js?v=5"></script>
-  <script src="pages/check-in.js?v=5"></script>
-  <script src="pages/trainers.js?v=5"></script>
-  <script src="pages/workout-programs.js?v=5"></script>
-  <script src="pages/nutrition-plans.js?v=5"></script>
-  <script src="pages/body-measurements.js?v=5"></script>
-  <script src="pages/group-classes.js?v=5"></script>
-  <script src="pages/payments.js?v=5"></script>
-  <script src="pages/pos.js?v=5"></script>
-  <script src="pages/inventory.js?v=5"></script>
-  <script src="pages/equipment.js?v=5"></script>
-  <script src="pages/branches.js?v=5"></script>
-  <script src="pages/users.js?v=5"></script>
-  <script src="pages/reports.js?v=5"></script>
-  <script src="pages/settings.js?v=5"></script>
-  <script src="js/app.js?v=6"></script>
+  <!-- ================= DEMO ================= -->
+  <section class="lp-section" id="demo">
+    <div class="lp-demo-panel">
+      <div class="lp-demo-left">
+        <h2 data-i18n="demoTitle">Explore the live demo</h2>
+        <p data-i18n="demoDesc">Click TRY DEMO to instantly enter a fully-functional version of GymPro populated with realistic fake data. No registration required.</p>
+        <ul class="lp-demo-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg> <span data-i18n="demoMembers">500+ Fake Members</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg> <span data-i18n="demoTrainers">30 Fake Trainers</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg> <span data-i18n="demoPlans">10 Membership Plans</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg> <span data-i18n="demoPayments">200+ Fake Payments</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg> <span data-i18n="demoAttendance">Attendance Records</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg> <span data-i18n="demoReports">Reports & Analytics</span></li>
+        </ul>
+        <button class="btn-try btn-try-lg" onclick="startDemo()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><path d="M10 17l5-5-5-5M15 12H3"/></svg>
+          <span data-i18n="tryDemo">TRY DEMO</span>
+        </button>
+      </div>
+      <div class="lp-demo-card">
+        <h3 data-i18n="demoAccounts">Demo Accounts</h3>
+        <div class="lp-demo-cred">
+          <span class="role-dot" style="background:#EF4444"></span>
+          <div><div class="role" data-i18n="roleSuperAdmin">Super Admin</div><div class="email">admin@gympro.com</div></div>
+        </div>
+        <div class="lp-demo-cred">
+          <span class="role-dot" style="background:#8B5CF6"></span>
+          <div><div class="role" data-i18n="roleOwner">Owner</div><div class="email">owner@gympro.com</div></div>
+        </div>
+        <div class="lp-demo-cred">
+          <span class="role-dot" style="background:#2563EB"></span>
+          <div><div class="role" data-i18n="roleManager">Manager</div><div class="email">manager@gympro.com</div></div>
+        </div>
+        <div class="lp-demo-cred">
+          <span class="role-dot" style="background:#06B6D4"></span>
+          <div><div class="role" data-i18n="roleReceptionist">Receptionist</div><div class="email">receptionist@gympro.com</div></div>
+        </div>
+        <div class="lp-demo-cred">
+          <span class="role-dot" style="background:#22C55E"></span>
+          <div><div class="role" data-i18n="roleTrainer">Trainer</div><div class="email">trainer@gympro.com</div></div>
+        </div>
+        <div class="lp-demo-cred">
+          <span class="role-dot" style="background:#F59E0B"></span>
+          <div><div class="role" data-i18n="roleAccountant">Accountant</div><div class="email">accountant@gympro.com</div></div>
+        </div>
+        <div class="lp-demo-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span data-i18n="demoNote">100% fake data · No registration required</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="lp-cta">
+    <h2 data-i18n="ctaTitle">Ready to see GymPro in action?</h2>
+    <p data-i18n="ctaDesc">Jump straight into the live demo environment and explore every feature with realistic data.</p>
+    <button class="btn-try btn-try-lg" onclick="startDemo()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><path d="M10 17l5-5-5-5M15 12H3"/></svg>
+      <span data-i18n="tryDemo">TRY DEMO</span>
+    </button>
+  </section>
+
+  <!-- ================= DEVELOPER ================= -->
+  <section class="lp-section" id="developer">
+    <div class="lp-dev">
+      <div class="dev-avatar">AE</div>
+      <h3 class="dev-name">AHMED ELHASSAN</h3>
+      <p class="dev-role" data-i18n="devRole">Full-Stack Developer · Creator of GymPro</p>
+      <div class="dev-contacts">
+        <a class="btn-github" href="https://github.com/Ahmedcode81" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.87-1.54-3.87-1.54-.53-1.34-1.28-1.7-1.28-1.7-1.05-.72.07-.71.07-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 015.8 0c2.2-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.21.68.8.56A10.52 10.52 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+          <span data-i18n="devGithub">View on GitHub</span>
+        </a>
+        <a class="btn-github btn-phone" href="tel:+966534136468">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          +966 53 413 6468
+        </a>
+        <a class="btn-github btn-email" href="mailto:ahmdhswwn86@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          <span data-i18n="devEmail">Email</span>
+        </a>
+        <a class="btn-github btn-whatsapp" href="https://wa.me/966534136468" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span data-i18n="devWhatsapp">WhatsApp</span>
+        </a>
+      </div>
+      <div class="dev-qr">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=tel:+966534136468" alt="Phone QR Code" width="140" height="140" />
+        <p data-i18n="devQr">Scan to call</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="lp-footer">
+    <div class="lp-brand">
+      <div class="lp-brand-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 6.5L17.5 17.5M6.5 17.5L17.5 6.5"/><path d="M4 4l0 0M20 20l0 0"/></svg>
+      </div>
+      <span class="lp-brand-name">GymPro</span>
+    </div>
+    <p><span data-i18n="footerCopy">&copy; 2025 GymPro · Developer: AHMED ELHASSAN</span> · <a href="https://github.com/Ahmedcode81" target="_blank" rel="noopener noreferrer" style="color:#2563EB">GitHub</a></p>
+    <p style="margin-top:4px" data-i18n="footerTag">Built with care for gym owners, trainers, and fitness enthusiasts.</p>
+  </footer>
+
+  <script src="landing.js"></script>
 </body>
 </html>
