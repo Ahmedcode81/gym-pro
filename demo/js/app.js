@@ -62,6 +62,17 @@ const GymProApp = (() => {
     settings: { title: 'Settings', section: 'System', icon: 'settings', perm: 'members', page: loadSettings, nav: true },
   };
 
+  // Function to get translated route data
+  function getTranslatedRoute(key) {
+    const route = routes[key];
+    if (!route) return route;
+    return {
+      ...route,
+      title: t(route.title),
+      section: t('section' + route.section) || route.section
+    };
+  }
+
   // Map path -> data
   const routeEntries = Object.entries(routes);
 

@@ -5,6 +5,7 @@
    ============================================================ */
 const DashboardPage = (() => {
   const { icon, money, money0, num, datetime, esc } = window.GymProUtils;
+  const { t } = window.GymProI18n;
 
   async function render(container) {
     try {
@@ -46,9 +47,9 @@ const DashboardPage = (() => {
     const ms = s.membership_statistics;
     const totalMs = ms.active + ms.expired + ms.pending || 1;
     const pieSegments = [
-      { label: 'Active', val: ms.active, color: '#22C55E' },
-      { label: 'Expired', val: ms.expired, color: '#EF4444' },
-      { label: 'Pending', val: ms.pending, color: '#F59E0B' },
+      { label: t('active'), val: ms.active, color: '#22C55E' },
+      { label: t('expired'), val: ms.expired, color: '#EF4444' },
+      { label: t('pending'), val: ms.pending, color: '#F59E0B' },
     ];
     let acc = 0;
     const pieGradients = pieSegments.map((seg) => {
@@ -67,18 +68,18 @@ const DashboardPage = (() => {
           <div style="font-size:0.75rem;color:#64748b">${esc(a.user)} &middot; ${datetime(a.timestamp)}</div>
         </div>
       </div>
-    `).join('') || '<div class="empty-state">No recent activity</div>';
+    `).join('') || `<div class="empty-state">${t('noData')}</div>`;
 
     container.innerHTML = `
       <div class="animate-fade-in">
         <div class="page-head">
           <div>
-            <h1>Dashboard</h1>
-            <p>Welcome back! Here's what's happening at your gym today.</p>
+            <h1>${t('Dashboard')}</h1>
+            <p>${t('dashboardWelcome')}</p>
           </div>
           <div class="page-head-actions">
-            <button class="btn btn-primary" data-nav="check-in">${icon('userCheck')} Check In Member</button>
-            <button class="btn btn-outline" data-nav="members">${icon('users')} View Members</button>
+            <button class="btn btn-primary" data-nav="check-in">${icon('userCheck')} ${t('checkInMember')}</button>
+            <button class="btn btn-outline" data-nav="members">${icon('users')} ${t('viewMembers')}</button>
           </div>
         </div>
 
@@ -88,65 +89,65 @@ const DashboardPage = (() => {
             <div class="stat-card-top">
               <div>
                 <div class="stat-value">${num(s.total_members)}</div>
-                <div class="stat-label">Total Members</div>
+                <div class="stat-label">${t('totalMembers')}</div>
               </div>
               <div class="stat-icon" style="background:#dbeafe;color:#2563eb">${icon('users')}</div>
             </div>
-            <div class="trend trend-up">${icon('arrowUp')} ${num(s.active_members)} active</div>
+            <div class="trend trend-up">${icon('arrowUp')} ${num(s.active_members)} ${t('activeMembers')}</div>
           </div>
           <div class="card stat-card">
             <div class="stat-card-top">
               <div>
                 <div class="stat-value">${num(s.today_checkins)}</div>
-                <div class="stat-label">Today's Check-ins</div>
+                <div class="stat-label">${t('todaysCheckins')}</div>
               </div>
               <div class="stat-icon" style="background:#dcfce7;color:#16a34a">${icon('userCheck')}</div>
             </div>
-            <div class="trend trend-up">${icon('arrowUp')} ${num(s.upcoming_classes)} classes today</div>
+            <div class="trend trend-up">${icon('arrowUp')} ${num(s.upcoming_classes)} ${t('classesToday')}</div>
           </div>
           <div class="card stat-card">
             <div class="stat-card-top">
               <div>
                 <div class="stat-value">${money(s.revenue_today)}</div>
-                <div class="stat-label">Revenue Today</div>
+                <div class="stat-label">${t('revenueToday')}</div>
               </div>
               <div class="stat-icon" style="background:#fef3c7;color:#d97706">${icon('dollar')}</div>
             </div>
-            <div class="trend trend-up">${icon('arrowUp')} ${money(s.revenue_this_month)} this month</div>
+            <div class="trend trend-up">${icon('arrowUp')} ${money(s.revenue_this_month)} ${t('revenueThisMonth')}</div>
           </div>
           <div class="card stat-card">
             <div class="stat-card-top">
               <div>
                 <div class="stat-value">${num(s.total_trainers)}</div>
-                <div class="stat-label">Trainers</div>
+                <div class="stat-label">${t('trainers')}</div>
               </div>
               <div class="stat-icon" style="background:#ede9fe;color:#7c3aed">${icon('dumbbell')}</div>
             </div>
-            <div class="trend">${icon('users')} ${num(s.total_classes)} classes</div>
+            <div class="trend">${icon('users')} ${num(s.total_classes)} ${t('classes')}</div>
           </div>
         </div>
 
         <!-- Charts -->
         <div class="grid grid-2" style="margin-bottom:24px">
           <div class="card chart-card">
-            <div class="card-header"><h3>Revenue (Last 7 days)</h3></div>
+            <div class="card-header"><h3>${t('revenueLast7Days')}</h3></div>
             <div class="card-body"><div class="bar-chart">${revBars}</div></div>
           </div>
           <div class="card chart-card">
-            <div class="card-header"><h3>Attendance (Last 7 days)</h3></div>
+            <div class="card-header"><h3>${t('attendanceLast7Days')}</h3></div>
             <div class="card-body"><div class="bar-chart">${attBars}</div></div>
           </div>
         </div>
 
         <div class="grid grid-3" style="margin-bottom:24px">
           <div class="card">
-            <div class="card-header"><h3>Membership Status</h3></div>
+            <div class="card-header"><h3>${t('membershipStatus')}</h3></div>
             <div class="card-body">
               <div class="pie-wrap">
                 <div class="pie-chart" style="background:conic-gradient(${pieGradients});border-radius:50%">
                   <div class="pie-center" style="background:#fff;border-radius:50%">
                     <span class="val">${num(totalMs)}</span>
-                    <span class="lbl">Members</span>
+                    <span class="lbl">${t('membersCount')}</span>
                   </div>
                 </div>
                 <div class="pie-legend">
@@ -162,15 +163,15 @@ const DashboardPage = (() => {
             </div>
           </div>
           <div class="card">
-            <div class="card-header"><h3>Inventory Alerts</h3></div>
+            <div class="card-header"><h3>${t('inventoryAlerts')}</h3></div>
             <div class="card-body">
-              <div class="stat-mini" style="border-bottom:1px solid #f3f4f6"><div class="val" style="color:#d97706">${num(s.low_stock)}</div><div class="lbl">Items low on stock</div></div>
-              <div class="stat-mini" style="border-bottom:1px solid #f3f4f6"><div class="val" style="color:#dc2626">${num(s.equipment_maintenance)}</div><div class="lbl">Equipment needs maintenance</div></div>
-              <div class="stat-mini"><div class="val" style="color:#2563eb">${num(s.upcoming_classes)}</div><div class="lbl">Active classes</div></div>
+              <div class="stat-mini" style="border-bottom:1px solid #f3f4f6"><div class="val" style="color:#d97706">${num(s.low_stock)}</div><div class="lbl">${t('itemsLowStock')}</div></div>
+              <div class="stat-mini" style="border-bottom:1px solid #f3f4f6"><div class="val" style="color:#dc2626">${num(s.equipment_maintenance)}</div><div class="lbl">${t('equipmentMaintenance')}</div></div>
+              <div class="stat-mini"><div class="val" style="color:#2563eb">${num(s.upcoming_classes)}</div><div class="lbl">${t('activeClasses')}</div></div>
             </div>
           </div>
           <div class="card">
-            <div class="card-header"><h3>Recent Activity</h3></div>
+            <div class="card-header"><h3>${t('recentActivity')}</h3></div>
             <div class="card-body" style="max-height:320px;overflow-y:auto">${activitiesHtml}</div>
           </div>
         </div>

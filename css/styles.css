@@ -909,6 +909,10 @@ body.rtl {
 body.rtl .sidebar {
   left: auto;
   right: 0;
+  transform: translateX(100%);
+}
+@media (min-width: 1024px) {
+  body.rtl .sidebar { transform: translateX(0); }
 }
 @media (min-width: 1024px) {
   body.rtl .main-wrap { padding-left: 0; padding-right: var(--sidebar-width); }
@@ -949,3 +953,9 @@ body.rtl .chevronLeft,
 body.rtl .chevronRight { transform: rotate(180deg); }
 body.rtl .toolbar-left,
 body.rtl .toolbar-right { flex-direction: row-reverse; }
+body.rtl .nav-link { text-align: right; }
+body.rtl .sidebar.collapsed .nav-link span { display: none; }
+body.rtl .sidebar.collapsed .nav-link { justify-content: center; }
+body.rtl .sidebar.collapsed .brand-name { display: none; }
+body.rtl .sidebar.collapsed .nav-section-title { display: none; }
+body.rtl .sidebar.collapsed .user-chip-info { display: none; }

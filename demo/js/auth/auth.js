@@ -15,6 +15,26 @@ const GymProAuth = (() => {
     accountant: 'Accountant',
   };
 
+  // Get translated role label
+  function getRoleLabel(role) {
+    if (window.GymProI18n) {
+      const key = role.replace('_', '').replace(/\b\w/g, l => l.toUpperCase());
+      const translationKey = key.charAt(0).toLowerCase() + key.slice(1);
+      const translations = {
+        superAdmin: 'superAdmin',
+        owner: 'owner', 
+        branchManager: 'branchManager',
+        receptionist: 'receptionist',
+        trainer: 'trainer',
+        accountant: 'accountant'
+      };
+      const tKey = translations[translationKey] || translationKey;
+      const translated = window.GymProI18n.t(tKey);
+      if (translated !== tKey) return translated;
+    }
+    return ROLE_LABELS[role] || role;
+  }
+
   const ROLE_COLORS = {
     super_admin: '#EF4444',
     owner: '#8B5CF6',
@@ -51,7 +71,8 @@ const GymProAuth = (() => {
     const users = GymProDB.all('users');
     const user = users.find((u) => u.email.toLowerCase() === String(email).toLowerCase() && u.password === password);
     if (!user) {
-      throw new Error('Invalid email or password');
+      const errorMsg = window.GymProI18n ? window.GymProI18n.t('invalidCredentials') : 'Invalid email or password';
+      throw new Error(errorMsg);
     }
     const safeUser = {
       id: user.id,
@@ -77,7 +98,7 @@ const GymProAuth = (() => {
   }
 
   function roleLabel(role) {
-    return ROLE_LABELS[role] || role;
+    return getRoleLabel(role);
   }
 
   function roleColor(role) {
@@ -90,14 +111,18 @@ const GymProAuth = (() => {
 
 // ---- Login view rendering ----
   function demoAccounts() {
-    return [
-      { role: 'super_admin', email: 'admin@gympro.com', password: 'admin123', label: 'Super Admin', color: '#EF4444' },
-      { role: 'owner', email: 'owner@gympro.com', password: 'owner123', label: 'Owner', color: '#8B5CF6' },
-      { role: 'branch_manager', email: 'manager@gympro.com', password: 'manager123', label: 'Manager', color: '#2563EB' },
-      { role: 'receptionist', email: 'receptionist@gympro.com', password: 'reception123', label: 'Receptionist', color: '#06B6D4' },
-      { role: 'trainer', email: 'trainer@gympro.com', password: 'trainer123', label: 'Trainer', color: '#22C55E' },
-      { role: 'accountant', email: 'accountant@gympro.com', password: 'account123', label: 'Accountant', color: '#F59E0B' },
+    const accounts = [
+      { role: 'super_admin', email: 'admin@gympro.com', password: 'admin123', color: '#EF4444' },
+      { role: 'owner', email: 'owner@gympro.com', password: 'owner123', color: '#8B5CF6' },
+      { role: 'branch_manager', email: 'manager@gympro.com', password: 'manager123', color: '#2563EB' },
+      { role: 'receptionist', email: 'receptionist@gympro.com', password: 'reception123', color: '#06B6D4' },
+      { role: 'trainer', email: 'trainer@gympro.com', password: 'trainer123', color: '#22C55E' },
+      { role: 'accountant', email: 'accountant@gympro.com', password: 'account123', color: '#F59E0B' },
     ];
+    return accounts.map(acc => ({
+      ...acc,
+      label: getRoleLabel(acc.role)
+    }));
   }
 
 function renderLogin() {
