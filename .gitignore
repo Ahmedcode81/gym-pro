@@ -43,11 +43,11 @@ yarn-error.log*
 uploads/
 *.tmp
 
-# Build
-dist/
+# Build (except frontend/dist for GitHub Pages)
 build/
 .next/
 out/
+# Keep frontend/dist for GitHub Pages deployment
 
 # Docker
 docker-compose.override.yml
@@ -67,11 +67,8 @@ setup_postgres.ps1
 *.sqlite
 *.sqlite3
 
-# Original React frontend build - keep local only
-frontend/
-node_modules/
-dist/
-build/
+# Frontend node_modules only - include dist for GitHub Pages
+frontend/node_modules/
 
 # Virtual environments
 venv/
