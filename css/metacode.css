@@ -1,0 +1,208 @@
+/* ============================================================
+   METACODE Landing Page - Additional Styles
+   Extends the existing GymPro landing page design system
+   ============================================================ */
+
+/* Alternating section backgrounds */
+.lp-section-alt {
+  background: #F8FAFC;
+}
+
+/* Product showcase */
+.lp-product-showcase {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 8px 24px rgba(15,23,42,0.06);
+}
+@media (min-width: 900px) {
+  .lp-product-showcase { grid-template-columns: 1fr 1fr; }
+}
+
+.lp-product-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.lp-product-mockup {
+  max-width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(15,23,42,0.15);
+}
+
+.lp-product-badge {
+  display: inline-block;
+  background: linear-gradient(135deg,#22C55E,#16A34A);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  margin-bottom: 12px;
+}
+
+.lp-product-name {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 0 0 8px;
+}
+
+.lp-product-tagline {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2563EB;
+  margin: 0 0 16px;
+}
+
+.lp-product-desc {
+  font-size: 1rem;
+  color: #64748B;
+  line-height: 1.6;
+  margin: 0 0 24px;
+}
+
+.lp-product-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.lp-product-feature {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #4B5563;
+}
+
+.lp-product-feature svg {
+  width: 18px;
+  height: 18px;
+  color: #22C55E;
+  flex-shrink: 0;
+}
+
+.lp-product-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Process steps */
+.lp-process {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media (min-width: 640px) {
+  .lp-process { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 1000px) {
+  .lp-process { grid-template-columns: repeat(5, 1fr); }
+}
+
+.lp-process-step {
+  text-align: center;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  border-radius: 16px;
+  transition: all .3s;
+}
+
+.lp-process-step:hover {
+  box-shadow: 0 12px 30px rgba(15,23,42,0.1);
+  transform: translateY(-4px);
+}
+
+.lp-step-number {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg,#2563EB,#6366F1);
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+}
+
+.lp-process-step h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 8px;
+}
+
+.lp-process-step p {
+  font-size: 0.85rem;
+  color: #64748B;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Footer navigation */
+.lp-footer-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin: 16px 0;
+  flex-wrap: wrap;
+}
+
+.lp-footer-nav a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #64748B;
+  transition: color .2s;
+}
+
+.lp-footer-nav a:hover {
+  color: #2563EB;
+}
+
+/* RTL Support for METACODE */
+body.rtl .lp-product-features {
+  direction: rtl;
+}
+
+body.rtl .lp-process-step {
+  direction: rtl;
+}
+
+body.rtl .lp-footer-nav {
+  direction: rtl;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .lp-product-features {
+    grid-template-columns: 1fr;
+  }
+  
+  .lp-product-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .lp-product-actions .btn-try {
+    justify-content: center;
+  }
+  
+  .lp-product-actions .btn-plain {
+    justify-content: center;
+  }
+}
