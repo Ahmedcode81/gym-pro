@@ -11,6 +11,7 @@
     en: {
       navFeatures: 'Features',
       navDemo: 'Live Demo',
+      navMetacode: 'METACODE',
       navDeveloper: 'Developer',
       tryDemo: 'TRY DEMO',
       heroBadge: 'All-in-one Gym Management Platform',
@@ -77,6 +78,7 @@
     ar: {
       navFeatures: 'المميزات',
       navDemo: 'تجربة مباشرة',
+      navMetacode: 'METACODE',
       navDeveloper: 'المطور',
       tryDemo: 'جرّب النسخة التجريبية',
       heroBadge: 'منصة متكاملة لإدارة الصالات الرياضية',

@@ -287,7 +287,7 @@
   };
 
   window.openGymProDemo = function () {
-    window.open('demo/index.html#/dashboard', '_blank');
+    window.open('../demo/index.html#/dashboard', '_blank');
   };
 
   // Apply on load
